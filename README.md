@@ -3,7 +3,7 @@ The objective of this repository is to gather a comprehensive list of potential 
  well as resources for learning how to prevent them. We welcome contributions in the form of pull requests, ranging from minor 
  documentation adjustments to the addition of new tools or resources.
 
-[![Follow Linkedin](https://img.shields.io/badge/Support-Project-critical)](https://www.linkedin.com/in/behrouz-torabi-409500173/)
+[![Follow Linkedin](https://img.shields.io/badge/-Follow%20Linkedin-yellow)](https://www.linkedin.com/in/behrouz-torabi-409500173/)
 
 ## List of Security Vulnerabilities
 
