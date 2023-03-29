@@ -68,7 +68,7 @@ The lack of proper signature verification in smart contracts can be attributed t
 
 To address this issue, the SWC Registry recommends that developers take steps to ensure proper signature verification in their smart contracts. This can include implementing multi-factor authentication mechanisms, such as requiring users to enter a password or use a hardware device to sign transactions. Additionally, developers should be sure to follow established best practices and standards for implementing signature verification in their smart contracts.
 
-Overall, the lack of proper signature verification in smart contracts is a serious security issue that needs to be addressed. By following established best practices and taking steps to implement multi-factor authentication mechanisms, developers can help to ensure the security and integrity of their smart
+Overall, the lack of proper signature verification in smart contracts is a serious security issue that needs to be addressed. By following established best practices and taking steps to implement multi-factor authentication mechanisms, developers can help to ensure the security and integrity of their smart contracts.
 
 - [SWC Registry: Lack of Proper Signature Verification](https://swcregistry.io/docs/SWC-122)
 
