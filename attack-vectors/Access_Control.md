@@ -60,6 +60,16 @@ Therefore, it is always recommended to use "msg.sender" instead of "tx.origin
 
 It is a common pattern for smart contract systems to allow users to sign messages off-chain instead of directly requesting users to do an on-chain transaction because of the flexibility and increased transferability that this provides. Smart contract systems that process signed messages have to implement their own logic to recover the authenticity from the signed messages before they process them further. A limitation for such systems is that smart contracts can not directly interact with them because they can not sign messages. Some signature verification implementations attempt to solve this problem by assuming the validity of a signed message based on other methods that do not have this limitation. An example of such a method is to rely on msg.sender and assume that if a signed message originated from the sender address then it has also been created by the sender address. This can lead to vulnerabilities especially in scenarios where proxies can be used to relay transactions.
 
+The SWC (Smart Contract Weakness Classification) Registry is a platform that is designed to identify and categorize different types of security weaknesses that exist in smart contracts. One particular security issue that has been identified in the SWC Registry is the lack of proper signature verification in smart contracts.
+
+Signature verification is an important security mechanism that is used to ensure the authenticity of transactions. In the context of smart contracts, signature verification is used to verify that a particular transaction has been authorized by the correct party. Without proper signature verification, unauthorized parties could potentially carry out transactions on the smart contract, which could lead to financial losses or other negative consequences.
+
+The lack of proper signature verification in smart contracts can be attributed to a number of factors. One common issue is that developers may not have a clear understanding of how to properly implement signature verification in their smart contracts. Additionally, there may be a lack of clear standards or best practices for implementing signature verification, which can make it difficult for developers to know what approach to take.
+
+To address this issue, the SWC Registry recommends that developers take steps to ensure proper signature verification in their smart contracts. This can include implementing multi-factor authentication mechanisms, such as requiring users to enter a password or use a hardware device to sign transactions. Additionally, developers should be sure to follow established best practices and standards for implementing signature verification in their smart contracts.
+
+Overall, the lack of proper signature verification in smart contracts is a serious security issue that needs to be addressed. By following established best practices and taking steps to implement multi-factor authentication mechanisms, developers can help to ensure the security and integrity of their smart
+
 - [SWC Registry: Lack of Proper Signature Verification](https://swcregistry.io/docs/SWC-122)
 
 ### Remediation
