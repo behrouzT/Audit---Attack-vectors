@@ -21,9 +21,13 @@ For example, let's say a user wants to interact with a contract that requires au
 To avoid this vulnerability, it is recommended that developers always use "msg.sender" instead of "tx.origin" for user authentication in smart contracts.
 here is an example code snippet that demonstrates the difference between using "msg.sender" and "tx.origin" in a smart contract:
 
-pragma solidity ^0.8.0;
 
-contract AuthenticationExample {
+----------------------------------------------------------------------------------------
+            
+    pragma solidity ^0.8.0;
+
+    contract AuthenticationExample {
+
     address public owner;
 
     constructor() {
@@ -39,7 +43,8 @@ contract AuthenticationExample {
         require(tx.origin == owner, "Unauthorized user");
         // do something
     }
-}
+--------------------------------------------------------------------------------------
+
 
 In this example, the contract has an "owner" address variable that is initialized to the address of the contract deployer, which is stored in the "msg.sender" variable in the constructor.
 
