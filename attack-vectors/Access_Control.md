@@ -10,6 +10,16 @@ The default visibility of solidity functions/state variables is `public`. Develo
 
 Sometimes developer use tx.origin instead of msg.sender. Tx.origin returns the address of the account that originally sent the call. Use this varible for authenticating leaves contract vulnerable to a phising-like attack.
 
+When developing smart contracts on the Ethereum blockchain, it is important to properly authenticate and verify the identities of users interacting with the contract. One way to do this is by using the "msg.sender" variable, which returns the address of the account that directly called the contract function.
+
+However, some developers may mistakenly use the "tx.origin" variable instead of "msg.sender" to authenticate users. "tx.origin" returns the address of the account that originally initiated the transaction, even if the transaction was made through another contract.
+
+Using "tx.origin" for authentication can leave the contract vulnerable to a phishing-like attack. In such an attack, a malicious contract could use a legitimate contract as a middleman to call the vulnerable contract with a different "tx.origin" address, making it appear as if the call was coming from a trusted source.
+
+For example, let's say a user wants to interact with a contract that requires authentication through "tx.origin". A malicious contract could deceive the user by impersonating the authentic contract and passing on the user's transaction with a different "tx.origin" address, thereby gaining unauthorized access to the vulnerable contract.
+
+To avoid this vulnerability, it is recommended that developers always use "msg.sender" instead of "tx.origin" for user authentication in smart contracts.
+
 - [Sigmaprime: tx.origin Authentication](https://blog.sigmaprime.io/solidity-security.html#tx-origin)
 
 ## Signature Verification
