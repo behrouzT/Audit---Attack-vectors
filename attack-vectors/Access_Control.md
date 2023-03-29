@@ -2,7 +2,7 @@
 
 There are a number of common mistakes relating to access control.
 
-## 1) Default Visibility
+## Default Visibility
 
 The default visibility of solidity functions/state variables is `public`. Developers may forget to specify the visibility for a function/state variable that is intended to be private.
 
