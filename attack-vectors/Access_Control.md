@@ -19,6 +19,35 @@ Using "tx.origin" for authentication can leave the contract vulnerable to a phis
 For example, let's say a user wants to interact with a contract that requires authentication through "tx.origin". A malicious contract could deceive the user by impersonating the authentic contract and passing on the user's transaction with a different "tx.origin" address, thereby gaining unauthorized access to the vulnerable contract.
 
 To avoid this vulnerability, it is recommended that developers always use "msg.sender" instead of "tx.origin" for user authentication in smart contracts.
+here is an example code snippet that demonstrates the difference between using "msg.sender" and "tx.origin" in a smart contract:
+
+pragma solidity ^0.8.0;
+
+contract AuthenticationExample {
+    address public owner;
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    function doSomething() public {
+        require(msg.sender == owner, "Unauthorized user");
+        // do something
+    }
+
+    function doSomethingUnsafe() public {
+        require(tx.origin == owner, "Unauthorized user");
+        // do something
+    }
+}
+
+In this example, the contract has an "owner" address variable that is initialized to the address of the contract deployer, which is stored in the "msg.sender" variable in the constructor.
+
+The "doSomething()" function uses "msg.sender" to authenticate that the caller of the function is the owner of the contract. If the caller is not the owner, the function will fail with an "Unauthorized user" error message.
+
+On the other hand, the "doSomethingUnsafe()" function uses "tx.origin" to authenticate the user. This function is vulnerable to the phishing attack described earlier because it assumes that the "tx.origin" variable is always trustworthy. If a malicious contract calls "doSomethingUnsafe()" with a different "tx.origin" address, the contract will think the malicious contract is the owner and allow it to execute the function.
+
+Therefore, it is always recommended to use "msg.sender" instead of "tx.origin
 
 - [Sigmaprime: tx.origin Authentication](https://blog.sigmaprime.io/solidity-security.html#tx-origin)
 
