@@ -82,6 +82,31 @@ Due to missing or insufficient access controls, malicious parties can withdraw s
 
 This bug is sometimes caused by unintentionally exposing initialization functions. By wrongly naming a function intended to be a constructor, the constructor code ends up in the runtime byte code and can be called by anyone to re-initialize the contract.
 
+An example of unintentionally exposing an initialization function in a smart contract might look something like this:
+
+    pragma solidity ^0.8.0;
+
+    contract MyContract {
+    address owner;
+    uint public balance;
+
+    function MyContract() public {
+        owner = msg.sender;
+        balance = 100 ether;
+    }
+
+    function withdraw() public {
+        require(msg.sender == owner);
+        owner.transfer(balance);
+        balance = 0;
+    }
+    }
+
+In this example, the intention is to have a constructor function that sets the contract owner and initializes the balance to 100 ether. However, due to an unintentional mistake, the function has been named MyContract instead of constructor. This means that the function can be called by anyone at any time, allowing anyone to re-initialize the contract and potentially steal the ether stored in the contract.
+
+To fix this vulnerability, the function should be renamed to constructor so that it is only called once during contract deployment, and the access control for the withdraw function should be reviewed to ensure that only the owner can withdraw funds from the contract.
+
+
 - [SWC Registry: Unprotected Ether Withdrawal](https://swcregistry.io/docs/SWC-105)
 
 ## Unprotected SELFDESTRUCT Instruction
