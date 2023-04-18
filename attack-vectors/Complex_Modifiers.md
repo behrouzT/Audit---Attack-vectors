@@ -32,5 +32,31 @@ Here's an example of using a modifier for input validation with require, without
 In this example, the validValue modifier is used to validate that the input newValue is non-negative. If the validation fails (i.e. the require statement evaluates to false), then the function call will revert and any state changes made up to that point will be undone. If the validation passes, then the function body will be executed as normal (_ is a placeholder that gets replaced with the function body code). The modifier itself contains no substantive logic beyond the input validation.
 
 
+ here's an example of a vulnerable use of modifiers:
+ 
+     contract VulnerableContract {
+     uint public counter;
+
+    modifier onlyPositive(uint num) {
+    if (num < 0) {
+      counter++;
+      revert("Number must be positive.");
+    }
+    _;
+     }
+
+     function addNumber(uint num) public onlyPositive(num) {
+    counter += num;
+     }
+    }
+
+
+
+In this example, the onlyPositive modifier not only checks that the input is positive, but it also increments a counter variable. This is problematic because the modifier is executed before the function body, so the counter variable will be incremented even if the input is invalid and the function call is reverted.
+
+This creates a vulnerability because an attacker could repeatedly call the addNumber function with negative numbers, causing the counter variable to increase without actually modifying the state of the contract. This could potentially lead to a denial-of-service attack by consuming the gas limit of the contract.
+
+To fix this, the onlyPositive modifier should only contain input validation with a require statement, and any other logic should be moved into the function body.
+
 
 - [Consensys Best Practices: Use Modifiers Only for Assertions](https://consensys.github.io/smart-contract-best-practices/recommendations/#use-modifiers-only-for-assertions)
