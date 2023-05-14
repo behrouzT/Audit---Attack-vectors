@@ -1,6 +1,6 @@
 # Smart contract attack vectors
 The objective of this repository is to gather a comprehensive list of potential attack vectors that could compromise smart contracts, as
- well as resources for learning how to prevent them. We welcome contributions in the form of pull requests, ranging from minor 
+ well as resources for learning how to prevent them. i welcome contributions in the form of pull requests, ranging from minor 
  documentation adjustments to the addition of new tools or resources.
 
 [![Follow Linkedin](https://img.shields.io/badge/-Follow%20Linkedin-yellow)](https://www.linkedin.com/in/behrouz-torabi-409500173/)
